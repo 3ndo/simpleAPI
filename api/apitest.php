@@ -23,7 +23,7 @@ class apitest extends apiBaseClass {
     
     //http://www.example.com/api/?apitest.helloAPIResponseBinary={"responseBinary":1}
     function helloAPIResponseBinary($apiMethodParams){
-        header('Content-type: image/jpeg');
+        header('Content-type: image/jpeg'); // заголовок Content-type уже был послан в index.php!
         echo file_get_contents("http://habrahabr.ru/i/error-404-monster.jpg");
     }
 
