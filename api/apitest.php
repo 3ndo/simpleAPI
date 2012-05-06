@@ -16,14 +16,14 @@ class apitest extends apiBaseClass {
             //Все ок параметры верные, их и вернем
             $retJSON->retParameter=$apiMethodParams->TestParamOne;
         }else{
-            $retJSON->errorno=  APIConstants::$ERROR_PARAMS;
+            $retJSON->errorno=  APIConstants::ERROR_PARAMS;
         }
         return $retJSON;
     }
     
     //http://www.example.com/api/?apitest.helloAPIResponseBinary={"responseBinary":1}
     function helloAPIResponseBinary($apiMethodParams){
-        header('Content-type: image/jpeg');
+        header('Content-type: image/jpeg'); // заголовок Content-type уже был послан в index.php!
         echo file_get_contents("http://habrahabr.ru/i/error-404-monster.jpg");
     }
 
