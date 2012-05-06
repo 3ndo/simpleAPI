@@ -27,7 +27,7 @@ class APIEngine {
     //Создаем JSON ответа
     function createDefaultJson() {
         $retObject = json_decode('{}');
-        $response = APIConstants::$RESPONSE;
+        $response = APIConstants::RESPONSE;
         $retObject->$response = json_decode('{}');
         return $retObject;
     }
@@ -42,7 +42,7 @@ class APIEngine {
             try {
                 $functionName = $this->apiFunctionName[1];//Название метода для вызова
                 $apiReflection->getMethod($functionName);//Провераем наличие метода
-                $response = APIConstants::$RESPONSE;
+                $response = APIConstants::RESPONSE;
                 $jsonParams = json_decode($this->apiFunctionParams);//Декодируем параметры запроса в JSON объект
                 if ($jsonParams) {
                     if (isset($jsonParams->responseBinary)){//Для возможности возврата не JSON, а бинарных данных таких как zip, png и др. контетнта 
@@ -52,7 +52,7 @@ class APIEngine {
                     }
                 } else {
                     //Если ошибка декодирования JSON параметров запроса
-                    $resultFunctionCall->errno = APIConstants::$ERROR_ENGINE_PARAMS;
+                    $resultFunctionCall->errno = APIConstants::ERROR_ENGINE_PARAMS;
                     $resultFunctionCall->error = 'ENGINE.Error given params';
                     $resultFunctionCall->request = $_REQUEST;
                 }
@@ -62,7 +62,7 @@ class APIEngine {
             }
         } else {
             //Если запрашиваемый API не найден
-            $resultFunctionCall->errno = APIConstants::$ERROR_ENGINE_PARAMS;
+            $resultFunctionCall->errno = APIConstants::ERROR_ENGINE_PARAMS;
             $resultFunctionCall->error = 'File not found';
             $resultFunctionCall->REQUEST = $_REQUEST;
         }

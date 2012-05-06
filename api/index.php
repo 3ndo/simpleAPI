@@ -1,5 +1,5 @@
 <?php
-header('Content-type: text/html; charset=UTF-8');
+header('Content-type: text/json; charset=UTF-8');
 if (count($_REQUEST)>0){
     require_once 'apiEngine.php';
     foreach ($_REQUEST as $apiFunctionName => $apiFunctionParams) {
